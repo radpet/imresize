@@ -42,13 +42,15 @@ def get_args():
 
 def resize_save_image(image_path: str, ratio: float, new_image_path: str):
     from PIL import Image
-    image = Image.open(image_path)
-
-    print('Resizing {} with ratio={}.'.format(image_path, ratio))
-    new_image_size = (int(image.size[0] * ratio), int(image.size[1] * ratio))
-    image = image.resize(new_image_size, Image.ANTIALIAS)
-    image.save(new_image_path)
-    print('Saved {} with size={}'.format(new_image_path, new_image_size))
+    try:
+        image = Image.open(image_path)
+        print('Resizing {} with ratio={}.'.format(image_path, ratio))
+        new_image_size = (int(image.size[0] * ratio), int(image.size[1] * ratio))
+        image = image.resize(new_image_size, Image.ANTIALIAS)
+        image.save(new_image_path)
+        print('Saved {} with size={}'.format(new_image_path, new_image_size))
+    except IOError:
+        print('Error resizing {}'.format(image_path))
 
 
 def get_image_name_from_path(image_path: str) -> str:
