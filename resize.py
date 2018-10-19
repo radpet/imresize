@@ -12,6 +12,8 @@ def main():
     else:
         image_paths = [args.impath]
 
+    image_paths = [os.path.normpath(path) for path in image_paths]
+
     resize_image_paths(image_paths, args.ratio, prefix, args.out)
 
 
