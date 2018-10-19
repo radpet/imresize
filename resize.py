@@ -52,7 +52,8 @@ def resize_image_paths(image_paths, ratio, prefix, root_output_folder):
 
 
 def get_last_path_node(path: str) -> str:
-    return path.rsplit('/', 1)[1]
+    import os
+    return path.rsplit(os.sep, 1)[1]
 
 
 def get_basename(path):
@@ -91,7 +92,8 @@ def get_image_name_from_path(image_path: str) -> str:
 
 
 def get_path_without_image_name(image_path: str) -> str:
-    return image_path.rsplit('/', 1)[0]
+    import os
+    return image_path.rsplit(os.sep, 1)[0]
 
 
 def get_new_image_path(image_path: str, image_name: str, prefix: str) -> str:
